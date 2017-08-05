@@ -10,7 +10,7 @@ nb_class = 3
 
 W = tf.Variable(tf.random_normal([4, nb_class]), name='weight')
 b = tf.Variable(tf.random_normal([nb_class]), name='bias')
-
+#tes
 # tf.nn.softmax computes softmax activations
 # softmax = exp(Logits) / reduce_sum(exp(Logits), dim)
 hypothesis = tf.nn.softmax(tf.matmul(X, W) + b)
