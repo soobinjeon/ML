@@ -10,7 +10,7 @@ nb_class = 3
 
 W = tf.Variable(tf.random_normal([4, nb_class]), name='weight')
 b = tf.Variable(tf.random_normal([nb_class]), name='bias')
-#tes
+
 # tf.nn.softmax computes softmax activations
 # softmax = exp(Logits) / reduce_sum(exp(Logits), dim)
 hypothesis = tf.nn.softmax(tf.matmul(X, W) + b)
@@ -29,5 +29,11 @@ with tf.Session() as sess:
         if step % 200 == 0:
 #            print(step, sess.run(cost, feed_dict={X: x_data, Y: y_data}))
             h_v, rs_v, c_v = sess.run([hypothesis,reduceSum,cost], feed_dict={X: x_data, Y: y_data})
-            h_v.
             print("Step: ",step,"\nHypothesis: \n",h_v, "\n redSum:\n",rs_v)
+
+    #Testing & One-hot encoding
+    a = sess.run(hypothesis, feed_dict={X: [[1, 11, 7, 9],
+                                            [1, 3, 4, 3],
+                                            [1, 1, 0, 1],
+                                            [1, 7, 7, 7]]})
+    print(a, sess.run(tf.arg_max(a, 1)))
