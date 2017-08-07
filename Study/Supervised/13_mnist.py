@@ -1,6 +1,6 @@
 import tensorflow as tf
 import random
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 tf.set_random_seed(777)
 
 from tensorflow.examples.tutorials.mnist import input_data
@@ -55,7 +55,7 @@ with tf.Session() as sess:
 
     print("Learning finished")
 
-    '''
+
     # Test the model using test sets
     print("Accuracy: ", accuracy.eval(session=sess, feed_dict={
         X: mnist.test.images, Y: mnist.test.labels}))
@@ -64,5 +64,13 @@ with tf.Session() as sess:
     r = random.randint(0, mnist.test.num_examples - 1)
     print("Label: ", sess.run(tf.argmax(mnist.test.labels[r:r + 1], 1)))
     print("Prediction: ", sess.run(
-        tf.argmax(hypothesis, 1), feed_dict={X: mnist.test.images[r:r + 1]}))
+        tf.argmax(Hypothesis, 1), feed_dict={X: mnist.test.images[r:r + 1]}))
+
+    '''
+    # don't know why this makes Travis Build error.
+    plt.imshow(
+    mnist.test.images[r:r + 1].reshape(28, 28),
+    cmap='Greys',
+    interpolation='nearest')
+    plt.show()
     '''
